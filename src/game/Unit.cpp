@@ -555,6 +555,9 @@ uint32 Unit::DealDamage(Unit* pVictim, uint32 damage, CleanDamage const* cleanDa
         if (pVictim->GetTypeId() == TYPEID_PLAYER && !pVictim->IsStandState() && !pVictim->hasUnitState(UNIT_STAT_STUNNED))
             pVictim->SetStandState(UNIT_STAND_STATE_STAND);
     }
+	//Remove Sap on damage
+	if(pVictim->GetAura(SPELL_AURA_MOD_STUN,SPELLFAMILY_ROGUE,128))
+	pVictim->RemoveSpellsCausingAura(SPELL_AURA_MOD_STUN);
 
     if (!damage)
     {
