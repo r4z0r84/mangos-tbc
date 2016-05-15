@@ -6830,6 +6830,9 @@ void Unit::Unmount(bool from_aura)
 
 void Unit::SetInCombatWith(Unit* enemy)
 {
+    //prevent drinking during combat
+	SetStandState(UNIT_STAND_STATE_STAND);
+
     Unit* eOwner = enemy->GetCharmerOrOwnerOrSelf();
     if (eOwner->IsPvP())
     {
